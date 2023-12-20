@@ -17,3 +17,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.container {
+  padding: 1rem;
+  z-index: 1;
+  max-width: 50rem;
+  margin: auto;
+  position: relative;
+}
