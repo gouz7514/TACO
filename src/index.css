@@ -6,6 +6,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --button-primary: #eee;
+  --button-danger: #ff0000;
 }
 
 body {

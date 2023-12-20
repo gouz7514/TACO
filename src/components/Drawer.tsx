@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 
-import { Link } from 'react-router-dom'
+import LinkButton from "./Atom/LinkButton"
 
 const DrawerStyle = styled.div`
   position: fixed;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   padding: 20px;
   background-color: white;
@@ -38,6 +36,15 @@ const DrawerStyle = styled.div`
       transform: translateX(0);
     }
   }
+
+  .drawer-menu {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
 `
 
 const Drawer = ({ onClose }: { onClose?: () => void }) => {
@@ -45,7 +52,7 @@ const Drawer = ({ onClose }: { onClose?: () => void }) => {
     <DrawerStyle onClick={onClose}>
       <div className="close" onClick={onClose} />
       <div className="drawer-menu">
-        <Link to="/login">Login</Link>
+        <LinkButton href="/login" text="로그인" size="medium" />
       </div>
     </DrawerStyle>
   )
