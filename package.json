@@ -11,6 +11,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
@@ -20,6 +21,7 @@
     "styled-components": "^6"
   },
   "devDependencies": {
+    "@types/node": "^20.10.5",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/react-router-dom": "^5.3.3",
@@ -32,6 +34,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "husky": "^8.0.3",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-tsconfig-paths": "^4.2.2"
   }
 }
