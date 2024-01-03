@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import GlobalStyle from './styles/GlobalStyle.ts'
 import MainLayout from './components/layouts/MainLayout.tsx'
 import Landing from './pages/Landing.tsx'
-import Login from './pages/Login.tsx'
+import SignIn from './pages/SignIn.tsx'
 import SignUp from './pages/SignUp.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
         </Route>
       </Routes>

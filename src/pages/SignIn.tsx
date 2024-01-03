@@ -8,22 +8,18 @@ import InputForm from "@/components/Organism/InputForm"
 import Input from "@/components/Molecule/Input"
 
 import supabase from "@/supabase/config"
-
 import useInput from "@/hooks/useInput"
+import { SIGN_IN_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
+import { isEmail, isLongerThanSix } from "@/util/validator"
 
-import { LOGIN_MESSAGE } from "@/constants/constants"
-
-const LoginStyle = styled.div`
-  height: calc(100vh - 80px);
+const SignInStyle = styled.div`
+  height: calc(100vh - 108px);
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
-const isEmail = (value: string) => value.includes('@')
-const isLongerThanSix = (value: string) => value.length >= 6
-
-const Login = () => {
+const SignIn = () => {
   const navigate = useNavigate()
 
   const {
@@ -32,7 +28,6 @@ const Login = () => {
     isError: emailError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: resetEmail,
   } = useInput(isEmail)
 
   const {
@@ -75,21 +70,20 @@ const Login = () => {
       })
       const { user, session } = data
       if (user && session) {
-        alert(LOGIN_MESSAGE.success)
         return navigate('/', { replace: true })
-      } else {
-        alert(LOGIN_MESSAGE.fail)
-        resetEmail()
+      }
+      if (error?.name === 'AuthApiError') {
+        alert(SIGN_IN_MESSAGE.fail)
         resetPassword()
-        console.log(error)
       }
     } catch (error) {
-      console.log(error)
+      alert(ERROR_COMMON_MESSAGE)
+      console.log('Error signing in: ', error)
     }
   }
 
   return (
-    <LoginStyle className="container">
+    <SignInStyle className="container">
       <InputForm onSubmit={onClickSignIn}>
         <Input
           type="text"
@@ -112,8 +106,8 @@ const Login = () => {
         <Button text="로그인" type="submit" color="primary" disabled={!formValid} />
         <LinkButton href="/signup" text="회원가입" color="secondary" />
       </InputForm>
-    </LoginStyle>
+    </SignInStyle>
   )
 }
 
-export default Login
+export default SignIn
