@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Button from './Button'
-import { LinkButtonProps } from '../../types/types'
+import { LinkButtonProps } from '@/types/types'
 
 const LinkButton = ({ href, text, size = 'large', color = 'primary' }: LinkButtonProps) => {
   return (

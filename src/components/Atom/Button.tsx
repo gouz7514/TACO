@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { ButtonProps } from '../../types/types'
+import { ButtonProps } from '@/types/types'
 
 const ButtonStyle = styled.button<Partial<ButtonProps>>`
   padding: 12px;
@@ -13,13 +13,10 @@ const ButtonStyle = styled.button<Partial<ButtonProps>>`
   cursor: pointer;
   border: 0;
 
-  &:hover {
-    filter: brightness(0.9);
-  }
-
   ${({ size }) => css`
     ${size === 'medium' && css`
       min-width: 120px;
+      width: auto;
       padding: 12px 16px;
     `}
 
@@ -32,6 +29,7 @@ const ButtonStyle = styled.button<Partial<ButtonProps>>`
   ${({ color }) => css`
     ${color === 'primary' && css`
       background-color: var(--button-primary);
+      color: white;
     `}
 
     ${color === 'danger' && css`
@@ -39,11 +37,20 @@ const ButtonStyle = styled.button<Partial<ButtonProps>>`
       color: white;
     `}
   `}
+
+  &:disabled {
+    cursor: not-allowed;
+    filter: brightness(0.8) opacity(0.8);
+  }
+
+  &:not(:disabled):hover {
+    filter: brightness(0.9);
+  }
 `
 
-const Button = ({ text, size = 'large', color = 'primary' }: ButtonProps) => {
+const Button = ({ text, size = 'large', color = 'primary', onClick = () => {}, disabled = false }: ButtonProps) => {
   return (
-    <ButtonStyle size={size} color={color}>
+    <ButtonStyle size={size} color={color} onClick={onClick} disabled={disabled}>
       {text}
     </ButtonStyle>
   )
