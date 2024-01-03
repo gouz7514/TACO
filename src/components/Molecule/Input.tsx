@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { forwardRef } from 'react'
 
-import { ERROR_GUIDE } from '@/constants/constants'
+import { INPUT_ERROR } from '@/constants/constants'
 
 type InputProps = {
   type: string
@@ -101,7 +101,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         disabled={props.disabled}
       />
       <span className="error-guide">
-        {isError ? `${ERROR_GUIDE(props.id)}` : ''}
+        { isError && `${INPUT_ERROR(props.id)}` }
       </span>
     </InputStyle>
   )
