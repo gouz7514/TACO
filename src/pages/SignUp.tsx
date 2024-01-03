@@ -6,7 +6,7 @@ import Button from "@/components/Atom/Button"
 import InputForm from "@/components/Organism/InputForm"
 import Input from "@/components/Molecule/Input"
 
-import supabase from "@/supabase/config"
+import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
 import { SIGN_UP_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix, isSamePassword } from "@/util/validator"
