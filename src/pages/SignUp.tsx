@@ -1,4 +1,4 @@
-import { useNavigate, Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import Button from "@/components/Atom/Button"
@@ -7,7 +7,6 @@ import Input from "@/components/Molecule/Input"
 
 import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
-import useAuth from "@/hooks/useAuth"
 import { SIGN_UP_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix, isSamePassword } from "@/util/validator"
 
@@ -19,7 +18,6 @@ const SignUpStyle = styled.div`
 `
 
 const SignUp = () => {
-  const { user } = useAuth()
   const navigate = useNavigate()
 
   const {
@@ -54,10 +52,6 @@ const SignUp = () => {
     formValid = true
   }
 
-  if (user) {
-    return <Navigate to="/" />
-  }
-
   async function onClickSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     try {
@@ -68,7 +62,7 @@ const SignUp = () => {
       const { user, session } = data
       if (user && session) {
         alert(SIGN_UP_MESSAGE.success)
-        return navigate('/', { replace: true })
+        return navigate('/admin', { replace: true })
       }
       if (error?.name === 'AuthApiError' && error?.message === 'User already registered') {
         alert(SIGN_UP_MESSAGE.alreadyExist)

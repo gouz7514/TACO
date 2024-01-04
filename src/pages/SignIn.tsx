@@ -1,4 +1,4 @@
-import { useNavigate, Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 import Button from "@/components/Atom/Button"
@@ -8,7 +8,6 @@ import Input from "@/components/Molecule/Input"
 
 import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
-import useAuth from "@/hooks/useAuth"
 import { SIGN_IN_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix } from "@/util/validator"
 
@@ -20,7 +19,6 @@ const SignInStyle = styled.div`
 `
 
 const SignIn = () => {
-  const { user } = useAuth()
   const navigate = useNavigate()
 
   const {
@@ -46,10 +44,6 @@ const SignIn = () => {
     formValid = true
   }
 
-  if (user) {
-    return <Navigate to="/" />
-  }
-
   async function onClickSignIn(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     try {
@@ -59,7 +53,7 @@ const SignIn = () => {
       })
       const { user, session } = data
       if (user && session) {
-        return navigate('/', { replace: true })
+        return navigate('/admin', { replace: true })
       }
       if (error?.name === 'AuthApiError') {
         alert(SIGN_IN_MESSAGE.fail)
