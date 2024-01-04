@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
+import Button from './Atom/Button'
 import LinkButton from "./Atom/LinkButton"
+import { useAuth } from '@/hooks/useAuth'
 
 const DrawerStyle = styled.div`
   position: fixed;
   height: 100vh;
-  padding: 20px;
+  padding: 20px 12px;
   background-color: white;
   right: 0;
   top: 0;
@@ -39,7 +41,7 @@ const DrawerStyle = styled.div`
 
   .drawer-menu {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -48,11 +50,27 @@ const DrawerStyle = styled.div`
 `
 
 const Drawer = ({ onClose }: { onClose?: () => void }) => {
+  const { user, signOut } = useAuth()
+
+  const onClickSignOut = () => {
+    if (confirm('로그아웃 하시겠습니까?') === false) return
+    signOut()
+  }
+
   return (
     <DrawerStyle onClick={onClose}>
       <div className="close" onClick={onClose} />
       <div className="drawer-menu">
-        <LinkButton href="/login" text="로그인" size="medium" />
+        { user ? (
+          <>
+            <Button text="로그아웃" size="medium" color="secondary" onClick={onClickSignOut} />
+          </>
+        ) : (
+          <>
+            <LinkButton href="/login" text="로그인" size="medium" />
+            <LinkButton href="/signup" text="회원가입" size="medium" />
+          </>
+        )}
       </div>
     </DrawerStyle>
   )
