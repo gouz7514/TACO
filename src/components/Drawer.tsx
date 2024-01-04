@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Button from './Atom/Button'
 import LinkButton from "./Atom/LinkButton"
-import { useAuth } from '@/hooks/useAuth'
+import useAuth from '@/hooks/useAuth'
 
 const DrawerStyle = styled.div`
   position: fixed;
