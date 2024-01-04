@@ -78,7 +78,7 @@ const SignIn = () => {
       }
     } catch (error) {
       alert(ERROR_COMMON_MESSAGE)
-      console.log('Error signing in: ', error)
+      console.error('Error signing in: ', error)
     }
   }
 
