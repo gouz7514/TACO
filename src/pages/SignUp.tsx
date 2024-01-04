@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Navigate } from "react-router-dom"
 import styled from "styled-components"
 
 import Button from "@/components/Atom/Button"
@@ -8,6 +7,7 @@ import Input from "@/components/Molecule/Input"
 
 import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
+import useAuth from "@/hooks/useAuth"
 import { SIGN_UP_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix, isSamePassword } from "@/util/validator"
 
@@ -19,6 +19,7 @@ const SignUpStyle = styled.div`
 `
 
 const SignUp = () => {
+  const { user } = useAuth()
   const navigate = useNavigate()
 
   const {
@@ -53,21 +54,9 @@ const SignUp = () => {
     formValid = true
   }
 
-  useEffect(() => {
-    const getSession = async () => {
-      try {
-        const { data: { session } } = await supabase.auth.getSession()
-        if (session) {
-          return navigate('/', { replace: true })
-        }
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    getSession()
-      .catch(err => console.error(err))
-  }, [navigate])
+  if (user) {
+    return <Navigate to="/" />
+  }
 
   async function onClickSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
