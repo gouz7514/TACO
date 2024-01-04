@@ -63,6 +63,7 @@ const Drawer = ({ onClose }: { onClose?: () => void }) => {
       <div className="drawer-menu">
         { user ? (
           <>
+            <LinkButton href="/admin" text="TASK 관리" size="medium" />
             <Button text="로그아웃" size="medium" color="secondary" onClick={onClickSignOut} />
           </>
         ) : (
