@@ -13,3 +13,9 @@ export interface ButtonProps {
 export interface LinkButtonProps extends ButtonProps {
   href: string;
 }
+
+export interface TacoProps {
+  id: number;
+  title: string;
+  description: string;
+}
