@@ -58,7 +58,7 @@ const SignIn = () => {
   }
 
   return (
-    <InputForm onSubmit={onClickSignIn}>
+    <InputForm title="로그인" onSubmit={onClickSignIn}>
       <Input
         type="text"
         id="email"

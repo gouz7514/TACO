@@ -67,7 +67,7 @@ const SignUp = () => {
   }
 
   return (
-      <InputForm onSubmit={onClickSignUp}>
+      <InputForm title="회원가입" onSubmit={onClickSignUp}>
         <Input
           type="email"
           id="email"

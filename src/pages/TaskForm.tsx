@@ -53,7 +53,7 @@ const TaskForm = () => {
   }
 
   return (
-    <InputForm onSubmit={onSubmitTask}>
+    <InputForm title="Task 추가하기" onSubmit={onSubmitTask}>
       <Input
         type="text"
         id="Title"
@@ -73,7 +73,7 @@ const TaskForm = () => {
         onChange={descriptionChangeHandler}
         onBlur={descriptionBlurHandler}
       />
-      <Button text="제출" size="large" disabled={!formValid} />
+      <Button text="추가하기" size="large" disabled={!formValid} />
     </InputForm>
   )
 }
