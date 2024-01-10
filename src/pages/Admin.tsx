@@ -90,7 +90,7 @@ const Admin = () => {
   }
 
   return (
-    <AdminStyle className='container'>
+    <AdminStyle>
       {
         loading
           ? <Loading />

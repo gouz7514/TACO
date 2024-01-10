@@ -75,7 +75,7 @@ const SignUp = () => {
   }
 
   return (
-    <SignUpStyle className="container">
+    <SignUpStyle>
       <InputForm onSubmit={onClickSignUp}>
         <Input
           type="email"

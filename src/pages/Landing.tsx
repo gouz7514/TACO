@@ -13,7 +13,7 @@ const LandingStyle = styled.div`
 
 const Landing = () => {
   return (
-    <LandingStyle className='container'>
+    <LandingStyle>
       <div className='landing-text'>
         TACO와 함께 당신의 TASK를 관리하세요!
       </div>

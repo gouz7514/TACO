@@ -66,7 +66,7 @@ const SignIn = () => {
   }
 
   return (
-    <SignInStyle className="container">
+    <SignInStyle>
       <InputForm onSubmit={onClickSignIn}>
         <Input
           type="text"
