@@ -14,8 +14,8 @@ const CardStyle = styled.div`
 
   .btn-delete {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 8px;
+    right: 8px;
     width: var(--icon-size);
     height: var(--icon-size);
     background-image: url('/icon/icon-delete.svg');
