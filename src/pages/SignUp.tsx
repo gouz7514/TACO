@@ -99,7 +99,7 @@ const SignUp = () => {
           onBlur={passwordConfirmBlurHandler}
           disabled={passwordValue === ''}
         />
-        <Button text="회원가입" size="large" color="primary" disabled={!formValid} />
+        <Button text="회원가입" size="large" disabled={!formValid} />
       </InputForm>
   )
 }

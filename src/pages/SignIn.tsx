@@ -79,7 +79,7 @@ const SignIn = () => {
         onChange={passwordChangeHandler}
         onBlur={passwordBlurHandler}
       />
-      <Button text="로그인" type="submit" color="primary" disabled={!formValid} />
+      <Button text="로그인" type="submit" disabled={!formValid} />
       <LinkButton href="/signup" text="회원가입" color="secondary" />
     </InputForm>
   )
