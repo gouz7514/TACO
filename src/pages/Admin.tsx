@@ -18,6 +18,10 @@ const AdminStyle = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+
+    @media screen and (max-width: 450px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 `
 
@@ -111,7 +115,10 @@ const Admin = () => {
                   }
                 </div>
               ) : (
-                <Empty title="등록된 Task가 없습니다." />
+                <Empty
+                  title="등록된 Task가 없습니다."
+                  subTitle="추가하기 버튼을 눌러 Task를 등록해주세요."
+                />
               )
             }
           </>

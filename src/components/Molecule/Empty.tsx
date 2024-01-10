@@ -1,29 +1,47 @@
 import styled from 'styled-components'
 
 const EmptyStyle = styled.div`
-  background-color: #ddd;
+  background-color: var(--color-lightgray);
   border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   .empty-text {
-    font-size: 24px;
-    font-weight: 600;
+    text-align: center;
+
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .sub-title {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 12px;
+    }
   }
 `
 
 interface EmptyProps {
   title: string
+  subTitle?: string
 }
 
-const Empty = ({ title }: EmptyProps) => {
+const Empty = ({ title, subTitle = '' }: EmptyProps) => {
   return (
     <EmptyStyle className='container'>
       <div className='empty-text'>
-        {title}
+        <div className="title">
+          {title}
+        </div>
+        {
+          subTitle &&
+          <div className="sub-title">
+            {subTitle}
+          </div>
+        }
       </div>
     </EmptyStyle>
   )
