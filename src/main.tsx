@@ -4,13 +4,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import GlobalStyle from './styles/GlobalStyle.ts'
+
 import MainLayout from './components/layouts/MainLayout.tsx'
+import AnonymousRoute from './components/Route/AnonymousRoute.tsx'
+import ProtectedRoute from './components/Route/ProtectedRoute.tsx'
+
 import Landing from './pages/Landing.tsx'
 import SignIn from './pages/SignIn.tsx'
 import SignUp from './pages/SignUp.tsx'
 import Admin from './pages/Admin.tsx'
-import AnonymousRoute from './components/Route/AnonymousRoute.tsx'
-import ProtectedRoute from './components/Route/ProtectedRoute.tsx'
+import TaskForm from './pages/TaskForm.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -33,6 +36,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path="/admin" element={
               <ProtectedRoute>
                 <Admin />
+              </ProtectedRoute>
+            } />
+            <Route path="/task/form" element={
+              <ProtectedRoute>
+                <TaskForm />
               </ProtectedRoute>
             } />
           </Route>

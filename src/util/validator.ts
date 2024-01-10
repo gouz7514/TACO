@@ -10,3 +10,7 @@ export const isLongerThanSix = (value: string) => {
 export const isSamePassword = (password: string, passwordConfirm: string) => {
   return password === passwordConfirm
 }
+
+export const isNotEmpty = (value: string) => {
+  return value.trim() !== ""
+}

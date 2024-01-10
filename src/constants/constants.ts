@@ -22,3 +22,9 @@ export const INPUT_ERROR = (type: string) => {
 }
 
 export const ERROR_COMMON_MESSAGE = '오류가 발생했습니다. 관리자에게 문의해주세요.'
+
+export const ERROR_MESSAGE = {
+  TASK : {
+    insert: 'Task 등록에 실패했습니다.',
+  }
+}
