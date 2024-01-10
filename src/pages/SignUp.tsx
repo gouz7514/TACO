@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import styled from "styled-components"
 
 import Button from "@/components/Atom/Button"
 import InputForm from "@/components/Organism/InputForm"
@@ -9,13 +8,6 @@ import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
 import { SIGN_UP_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix, isSamePassword } from "@/util/validator"
-
-const SignUpStyle = styled.div`
-  height: calc(100vh - 108px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 const SignUp = () => {
   const navigate = useNavigate()
@@ -75,12 +67,12 @@ const SignUp = () => {
   }
 
   return (
-    <SignUpStyle className="container">
-      <InputForm onSubmit={onClickSignUp}>
+      <InputForm title="회원가입" onSubmit={onClickSignUp}>
         <Input
           type="email"
           id="email"
-          placeholder="이메일"
+          placeholder="example@example.com"
+          label="이메일"
           value={emailValue}
           isError={emailError}
           onChange={emailChangeHandler}
@@ -89,7 +81,8 @@ const SignUp = () => {
         <Input
           type="password"
           id="password"
-          placeholder="비밀번호"
+          placeholder="6자리 이상의 비밀번호를 입력해주세요."
+          label="비밀번호"
           value={passwordValue}
           isError={passwordError}
           onChange={passwordChangeHandler}
@@ -99,15 +92,15 @@ const SignUp = () => {
           type="password"
           id="passwordConfirm"
           placeholder="비밀번호 확인"
+          label="비밀번호 확인"
           value={passwordConfirmValue}
           isError={passwordConfirmError}
           onChange={passwordConfirmChangeHandler}
           onBlur={passwordConfirmBlurHandler}
           disabled={passwordValue === ''}
         />
-        <Button text="회원가입" size="large" color="primary" disabled={!formValid} />
+        <Button text="회원가입" size="large" disabled={!formValid} />
       </InputForm>
-    </SignUpStyle>
   )
 }
 

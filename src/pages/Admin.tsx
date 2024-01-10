@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import supabase from '@/config/supabase'
-import Button from '@/components/Atom/Button'
+import LinkButton from '@/components/Atom/LinkButton'
 import Card from '@/components/Molecule/Card'
 import Loading from '@/components/Atom/Loading'
 import Empty from '@/components/Molecule/Empty'
@@ -49,27 +49,6 @@ const Admin = () => {
       })
   }, [])
 
-  async function onClickAddTaco(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const { error } = await supabase
-      .from('tacos')
-      .insert({
-        title: 'from test',
-        description: 'This is description'
-      })
-
-    if (error) throw error
-
-    fetchTacos()
-      .then((data) => {
-        setTacos(data)
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
   const onClickDelete = async (id: number) => {
     if (confirm('삭제하시겠습니까?') === false) return
     const { error } = await supabase
@@ -90,14 +69,14 @@ const Admin = () => {
   }
 
   return (
-    <AdminStyle className='container'>
+    <AdminStyle>
       {
         loading
           ? <Loading />
           :
           <>
             <div className="button-container">
-              <Button text="추가하기" onClick={onClickAddTaco} />
+              <LinkButton href="/task/form" text="추가하기" />
             </div>
             {
               tacos.length ? (

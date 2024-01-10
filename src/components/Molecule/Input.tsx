@@ -8,6 +8,7 @@ type InputProps = {
   id: string
   ref?: any
   name?: string
+  label?: string
   placeholder?: string
   value: string
   isError?: boolean
@@ -87,7 +88,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <InputStyle {...restProps}>
-      <label htmlFor={props.id}>{props.placeholder}</label>
+      { props.label && <label htmlFor={props.label}>{props.label}</label> }
       <input
         className={isError ? 'error' : ''}
         type={props.type}

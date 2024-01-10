@@ -31,7 +31,7 @@ interface EmptyProps {
 
 const Empty = ({ title, subTitle = '' }: EmptyProps) => {
   return (
-    <EmptyStyle className='container'>
+    <EmptyStyle>
       <div className='empty-text'>
         <div className="title">
           {title}

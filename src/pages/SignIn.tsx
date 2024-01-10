@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import styled from "styled-components"
 
 import Button from "@/components/Atom/Button"
 import LinkButton from "@/components/Atom/LinkButton"
@@ -10,13 +9,6 @@ import supabase from "@/config/supabase"
 import useInput from "@/hooks/useInput"
 import { SIGN_IN_MESSAGE, ERROR_COMMON_MESSAGE } from "@/constants/constants"
 import { isEmail, isLongerThanSix } from "@/util/validator"
-
-const SignInStyle = styled.div`
-  height: calc(100vh - 108px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -66,30 +58,30 @@ const SignIn = () => {
   }
 
   return (
-    <SignInStyle className="container">
-      <InputForm onSubmit={onClickSignIn}>
-        <Input
-          type="text"
-          id="email"
-          placeholder="이메일"
-          value={emailValue}
-          isError={emailError}
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
-        />
-        <Input
-          type="password"
-          id="password"
-          placeholder="비밀번호"
-          value={passwordValue}
-          isError={passwordError}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-        />
-        <Button text="로그인" type="submit" color="primary" disabled={!formValid} />
-        <LinkButton href="/signup" text="회원가입" color="secondary" />
-      </InputForm>
-    </SignInStyle>
+    <InputForm title="로그인" onSubmit={onClickSignIn}>
+      <Input
+        type="text"
+        id="email"
+        placeholder="example@example.com"
+        label="이메일"
+        value={emailValue}
+        isError={emailError}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
+      />
+      <Input
+        type="password"
+        id="password"
+        placeholder="6자리 이상의 비밀번호를 입력해주세요."
+        label="비밀번호"
+        value={passwordValue}
+        isError={passwordError}
+        onChange={passwordChangeHandler}
+        onBlur={passwordBlurHandler}
+      />
+      <Button text="로그인" type="submit" disabled={!formValid} />
+      <LinkButton href="/signup" text="회원가입" color="secondary" />
+    </InputForm>
   )
 }
 

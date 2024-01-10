@@ -3,10 +3,12 @@ import Header from "../Header"
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
       <Header />
-      <Outlet />
-    </div>
+      <div className="container">
+        <Outlet />
+      </div>
+    </>
   )
 }
 
